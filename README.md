@@ -2,8 +2,8 @@
 This repository was a clone of: https://github.com/patil-suraj/question_generation (See instruction here)
 Bonus 2 file:
 - search_keyword.py:
-	input: keyword, 
-	output: wikipedia relevant keyword with link
+		input: keyword.
+		output: wikipedia relevant keyword with link.
 
 ```
 Sample: 'washington'
