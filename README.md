@@ -1,10 +1,9 @@
 # Question Generation using 🤗transformers
 This repository was a clone of: https://github.com/patil-suraj/question_generation (See instruction here)
 Bonus 2 file:
-- search_keyword.py:
-		input: keyword.
-		output: wikipedia relevant keyword with link.
-
+1. **search_keyword.py**:
+- input: keyword.
+- output: wikipedia relevant keyword with link
 ```
 Sample: 'washington'
 Output: [
@@ -16,10 +15,9 @@ Output: [
 	('Washington Senators (1901–1960)', '', 'https://en.wikipedia.org/wiki/Washington_Senators_(1901%E2%80%931960)')
 ]
 ```
-- playground.py:
-	input: sentence  or paragraph
-	output: question
-
+2. **playground.py**:
+- input: sentence  or paragraph
+- output: question
 ```
 Sample: 'When the American League declared itself a major league in 1901, the new league moved the previous minor league circuit Western League\'s Kansas City Blues franchise to Washington, a city that had been abandoned by the older National League a year earlier. The new Washington club, like the old one, was called the "Senators" (the second of three franchises to hold the name). Jim Manning moved with the Kansas City club to manage the first Senators team.'
 Output:
