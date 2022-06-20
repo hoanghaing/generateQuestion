@@ -17,7 +17,7 @@ Output: [
 	('Washington Senators (1901–1960)', '', 'https://en.wikipedia.org/wiki/Washington_Senators_(1901%E2%80%931960)')
 ]
 ```
-2. **playground.py**:
+2. **gen_question.py**:
 - input: sentence  or paragraph
 - output: question
 ```
@@ -29,11 +29,38 @@ to hold the name). Jim Manning moved with the Kansas City club to manage the fir
 ```
 Output:
  [
- 	'When did the American League declare itself a major league?', 
-	'Who moved the Kansas City Blues franchise to Washington?',
-	'What was the name of the new Washington club?', 
- 	'How many Senators teams did Jim Manning manage?'
+'When did the American League declare itself a major league?', 'Who moved the Kansas City Blues franchise to Washington?',
+'What was the name of the new Washington club?', 'How many Senators teams did Jim Manning manage?'
  ]
+```
+```
+Sample: Python is a programming language. Created by Guido van Rossum and first released in 1991.
+```
+```
+Output: ['What is a programming language?', 'Who created Python?', 'When was Python first released?']
+```
+```
+Sample: 'Ronaldo began his career with Portugal at age 18. He scored his first goal at UEFA Euro 2004 and helped
+Portugal reach the final, although they lost to Greece 1-0. The first World Cup he played at was the 2006 FIFA World Cup.
+He scored a goal and helped Portugal earn fourth place. Two years later, he became Portugal\'s full captain'
+```
+```
+Output: [
+'When did Ronaldo start his career with Portugal?', "What was Ronaldo's first goal at UEFA Euro 2004?",
+'When did Portugal lose to Greece?', 'Who was the first World Cup Ronaldo played at?'
+]
+```
+```
+Sample: 'Joseph Robinette Biden Jr. born November 20, 1942) is an American politician and the 46th and current president of
+the United States since 2021. Biden was also the 47th vice president from 2009 through 2017 during the Barack Obama presidency.
+He is a member of the Democratic Party and is from Wilmington, Delaware. Before becoming vice president, Biden was a U.S. Senator
+from Delaware from 1973 to 2009. He had served in the Senate longer than any other President or Vice President.'
+```
+```
+Output: [
+'When was Joseph Robinette Biden Jr. born?','Who is the 46th and current president of the United States since 2021?',
+'From 2009 to 2017 who is Biden a member of?', 'Before becoming vice president, Biden was a U.S. Senator from what state?'
+]
 ```
 3. **multitaskQA.py**:
 - input: object with context and question
@@ -48,8 +75,30 @@ print("answer: ", answer)
 ```
 Output: 1901
 ```
+4. **Generate Distractor**
+- input: answer
+- output: n wrong answer that similar to true answer
+```
+Sample:
+options = generate_distractors('messi', 4)
+print(options) => ["eto'o", 'ronaldinho', 'iniesta', 'ronaldo']
+options = generate_distractors('SM entertainment', 4)
+=> []: complex and many word answer make it hard to generate similar
+options = generate_distractors('Youtube', 4)
+=> ['facebook', 'myspace', 'twitter']
+options = generate_distractors('Tailwind', 3)
+=> ['headwind', 'crosswinds', 'oef']
+options = generate_distractors('1945', 3)
+=> ['1944', '1942', '1943']
+options = generate_distractors('Final Fantasy Tactics: The War of the Lions', 3)
+=> []
+options = generate_distractors('stephencurry', 3)
+=> []
+options = generate_distractors('28th International Eucharistic Congress', 3)
+=> []
+```
 **Summary**
 - (1) Context finding: user input something, get the link, process the link to get paragraph, use paragraph as **context**
 - (2) Question Generation: context in (1) is input of (2), with each context, get **questions**
 - (3) Answer Generation: context in (1) and questions in (2) is input of (3), return **answer**
-- (4) Adding another options -> MCE question
+- (4) Adding another options (Distractor) -> MCE question
