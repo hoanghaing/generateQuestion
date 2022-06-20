@@ -17,7 +17,7 @@ Output: [
 	('Washington Senators (1901–1960)', '', 'https://en.wikipedia.org/wiki/Washington_Senators_(1901%E2%80%931960)')
 ]
 ```
-2. **playground.py**:
+2. **gen_question.py**:
 - input: sentence  or paragraph
 - output: question
 ```
