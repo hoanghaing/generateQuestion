@@ -29,10 +29,8 @@ to hold the name). Jim Manning moved with the Kansas City club to manage the fir
 ```
 Output:
  [
- 	'When did the American League declare itself a major league?', 
-	'Who moved the Kansas City Blues franchise to Washington?',
-	'What was the name of the new Washington club?', 
- 	'How many Senators teams did Jim Manning manage?'
+'When did the American League declare itself a major league?', 'Who moved the Kansas City Blues franchise to Washington?',
+'What was the name of the new Washington club?', 'How many Senators teams did Jim Manning manage?'
  ]
 ```
 ```
@@ -47,7 +45,10 @@ Portugal reach the final, although they lost to Greece 1-0. The first World Cup 
 He scored a goal and helped Portugal earn fourth place. Two years later, he became Portugal\'s full captain'
 ```
 ```
-Output: 
+Output: [
+'When did Ronaldo start his career with Portugal?', "What was Ronaldo's first goal at UEFA Euro 2004?",
+'When did Portugal lose to Greece?', 'Who was the first World Cup Ronaldo played at?'
+]
 ```
 ```
 Sample: 'Joseph Robinette Biden Jr. born November 20, 1942) is an American politician and the 46th and current president of
@@ -56,7 +57,10 @@ He is a member of the Democratic Party and is from Wilmington, Delaware. Before 
 from Delaware from 1973 to 2009. He had served in the Senate longer than any other President or Vice President.'
 ```
 ```
-Output: 
+Output: [
+'When was Joseph Robinette Biden Jr. born?','Who is the 46th and current president of the United States since 2021?',
+'From 2009 to 2017 who is Biden a member of?', 'Before becoming vice president, Biden was a U.S. Senator from what state?'
+]
 ```
 3. **multitaskQA.py**:
 - input: object with context and question
