@@ -48,8 +48,30 @@ print("answer: ", answer)
 ```
 Output: 1901
 ```
+4. **Generate Distractor**
+- input: answer
+- output: n wrong answer that similar to true answer
+```
+Sample:
+options = generate_distractors('messi', 4)
+print(options) => ["eto'o", 'ronaldinho', 'iniesta', 'ronaldo']
+options = generate_distractors('SM entertainment', 4)
+=> []: complex and many word answer make it hard to generate similar
+options = generate_distractors('Youtube', 4)
+=> ['facebook', 'myspace', 'twitter']
+options = generate_distractors('Tailwind', 3)
+=> ['headwind', 'crosswinds', 'oef']
+options = generate_distractors('1945', 3)
+=> ['1944', '1942', '1943']
+options = generate_distractors('Final Fantasy Tactics: The War of the Lions', 3)
+=> []
+options = generate_distractors('stephencurry', 3)
+=> []
+options = generate_distractors('28th International Eucharistic Congress', 3)
+=> []
+```
 **Summary**
 - (1) Context finding: user input something, get the link, process the link to get paragraph, use paragraph as **context**
 - (2) Question Generation: context in (1) is input of (2), with each context, get **questions**
 - (3) Answer Generation: context in (1) and questions in (2) is input of (3), return **answer**
-- (4) Adding another options -> MCE question
+- (4) Adding another options (Distractor) -> MCE question
