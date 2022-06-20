@@ -1,11 +1,13 @@
 # Question Generation using 🤗transformers
 This repository was a clone of: https://github.com/patil-suraj/question_generation (See instruction here)
-Bonus 2 file:
+I added 3 file below:
 1. **search_keyword.py**:
 - input: keyword.
 - output: wikipedia relevant keyword with link
 ```
 Sample: 'washington'
+```
+```
 Output: [
 	('Washington', '', 'https://en.wikipedia.org/wiki/Washington'),
 	('Washington, D.C.', '', 'https://en.wikipedia.org/wiki/Washington,_D.C.'),
@@ -23,6 +25,8 @@ Sample: 'When the American League declared itself a major league in 1901, the ne
 circuit Western League\'s Kansas City Blues franchise to Washington, a city that had been abandoned by the older National
 League a year earlier.The new Washington club, like the old one, was called the "Senators"\ (the second of three franchises
 to hold the name). Jim Manning moved with the Kansas City club to manage the first Senators team.'
+```
+```
 Output:
  [
  	'When did the American League declare itself a major league?', 
@@ -31,3 +35,21 @@ Output:
  	'How many Senators teams did Jim Manning manage?'
  ]
 ```
+3. **multitaskQA.py**:
+- input: object with context and question
+- output: the answer
+```
+Sample:
+answer = nlp({
+    "question": "When did the American League declare itself a major league?",
+    "context": "When the American League declared itself a major league in 1901, the new league moved the previous minor league circuit Western League\'s Kansas City Blues franchise to Washington, a city that had been abandoned by the older National League a year earlier.The new Washington club, like the old one, was called the 'Senators' (the second of three franchises to hold the name). Jim Manning moved with the Kansas City club to manage the first Senators team."})
+print("answer: ", answer)
+```
+```
+Output: 1901
+```
+**Summary**
+- (1) Context finding: user input something, get the link, process the link to get paragraph, use paragraph as **context**
+- (2) Question Generation: context in (1) is input of (2), with each context, get **questions**
+- (3) Answer Generation: context in (1) and questions in (2) is input of (3), return **answer**
+- (4) Adding another options -> MCE question
