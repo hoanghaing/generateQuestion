@@ -35,6 +35,29 @@ Output:
  	'How many Senators teams did Jim Manning manage?'
  ]
 ```
+```
+Sample: Python is a programming language. Created by Guido van Rossum and first released in 1991.
+```
+```
+Output: ['What is a programming language?', 'Who created Python?', 'When was Python first released?']
+```
+```
+Sample: 'Ronaldo began his career with Portugal at age 18. He scored his first goal at UEFA Euro 2004 and helped
+Portugal reach the final, although they lost to Greece 1-0. The first World Cup he played at was the 2006 FIFA World Cup.
+He scored a goal and helped Portugal earn fourth place. Two years later, he became Portugal\'s full captain'
+```
+```
+Output: 
+```
+```
+Sample: 'Joseph Robinette Biden Jr. born November 20, 1942) is an American politician and the 46th and current president of
+the United States since 2021. Biden was also the 47th vice president from 2009 through 2017 during the Barack Obama presidency.
+He is a member of the Democratic Party and is from Wilmington, Delaware. Before becoming vice president, Biden was a U.S. Senator
+from Delaware from 1973 to 2009. He had served in the Senate longer than any other President or Vice President.'
+```
+```
+Output: 
+```
 3. **multitaskQA.py**:
 - input: object with context and question
 - output: the answer
