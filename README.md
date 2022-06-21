@@ -9,7 +9,7 @@ Giải nén:
 - vứt **file glove.6B.300d** vào trong thư mục ./data/embeddings/
 - vứt 2 file **train-v1.1.json**, **dev-v1.1.json** vào thư mục ./data/squad-v1/
 
-Tiến hành tạo ra vector tử glove.6b.300d, chạy: <br />
+Tiến hành tạo ra vector tử glove.6b.300d, chạy (Mất khoảng 2 phút): <br />
 ```
 python gen_vector.py
 ```
@@ -22,7 +22,7 @@ Tạo quiz bằng cách chạy lệnh: <br />
 python ./gen_mce.py [path-to-your-json-file]
 Eg: python ./gen_mce.py ./context/sample.json
 ```
-Quá trình chạy xong sẽ tạo ra 3 file Json: <br />
+Quá trình chạy xong sẽ tạo ra 3 file .json: <br />
 - File sample_mces.json: File có multiple choice hoàn chỉnh <br />
 - File sample_typeans.json: File bị fail trong quá trình tạo đáp án sai, coi như type answer <br />
 - File sample_ques.json: File bị fail: không tìm được đáp án cho câu hỏi được tạo, chỉ chứa mình câu hỏi <br />
