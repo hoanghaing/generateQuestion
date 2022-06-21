@@ -22,7 +22,7 @@ Tạo quiz bằng cách chạy lệnh: <br />
 python ./gen_mce.py [path-to-your-json-file]
 Eg: python ./gen_mce.py ./context/sample.json
 ```
-Quá trình chạy xong sẽ tạo ra 3 file Json: <br />
+Quá trình chạy xong sẽ tạo ra 3 file .json: <br />
 - File sample_mces.json: File có multiple choice hoàn chỉnh <br />
 - File sample_typeans.json: File bị fail trong quá trình tạo đáp án sai, coi như type answer <br />
 - File sample_ques.json: File bị fail: không tìm được đáp án cho câu hỏi được tạo, chỉ chứa mình câu hỏi <br />
