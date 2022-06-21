@@ -9,7 +9,7 @@ Giải nén:
 - vứt **file glove.6B.300d** vào trong thư mục ./data/embeddings/
 - vứt 2 file **train-v1.1.json**, **dev-v1.1.json** vào thư mục ./data/squad-v1/
 
-Tiến hành tạo ra vector tử glove.6b.300d, chạy: <br />
+Tiến hành tạo ra vector tử glove.6b.300d, chạy (Mất khoảng 2 phút): <br />
 ```
 python gen_vector.py
 ```
