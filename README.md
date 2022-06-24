@@ -1,3 +1,6 @@
+# Tạo các presentations
+```python ./gen_presentation.py ./context/wiki_test.json```
+Nhận về 'filename'_presentation.json làm input
 # Cài đặt
 Yêu cầu: Python 3.7.9, gensim, pytorch === 1.10.0, transformers==3.0.0, pipeline <br />
 Tham khảo lệnh ở các repo sau để cài nếu cần: <br />
