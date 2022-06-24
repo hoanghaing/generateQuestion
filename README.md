@@ -1,7 +1,7 @@
 # Tạo các presentations
 ```python ./gen_presentation.py ./context/wiki_test.json```
 <br />Nhận về 'filename'_presentation.json làm input
-<br /> Format:
+<br /> Format (wiki_test.json):
 ```
 [
   {
