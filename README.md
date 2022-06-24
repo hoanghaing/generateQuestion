@@ -1,6 +1,567 @@
 # Tạo các presentations
 ```python ./gen_presentation.py ./context/wiki_test.json```
-Nhận về 'filename'_presentation.json làm input
+<br />Nhận về 'filename'_presentation.json làm input
+<br /> Format:
+```
+[
+  {
+    "name": "Bob Benmosche",
+    "index": "wikipedia-23886872",
+    "slides": [
+      {
+        "title": [
+          "When did Rabbi Herman Ben Mosche move the family to the United States?"
+        ],
+        "titleLowercase": "when did rabbi herman ben mosche move the family to the united states?",
+        "slideOptions": [
+          {
+            "title": "1892",
+            "correct": "false"
+          },
+          {
+            "title": "1891",
+            "correct": "false"
+          },
+          {
+            "title": "1895",
+            "correct": "false"
+          },
+          {
+            "title": "1894",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "When did he earn his Bachelor of Arts degree in Mathematics?"
+        ],
+        "titleLowercase": "when did he earn his bachelor of arts degree in mathematics?",
+        "slideOptions": [
+          {
+            "title": "1965",
+            "correct": "false"
+          },
+          {
+            "title": "1963",
+            "correct": "false"
+          },
+          {
+            "title": "1969",
+            "correct": "false"
+          },
+          {
+            "title": "1966",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "When did Benmosche join Arthur D. Little and Information Science as a consultant?"
+        ],
+        "titleLowercase": "when did benmosche join arthur d. little and information science as a consultant?",
+        "slideOptions": [
+          {
+            "title": "1971",
+            "correct": "false"
+          },
+          {
+            "title": "1978",
+            "correct": "false"
+          },
+          {
+            "title": "1976",
+            "correct": "false"
+          },
+          {
+            "title": "1975",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "In what year did Ben Mosche join the Chase Manhattan systems group?"
+        ],
+        "titleLowercase": "in what year did ben mosche join the chase manhattan systems group?",
+        "slideOptions": [
+          {
+            "title": "1971",
+            "correct": "false"
+          },
+          {
+            "title": "1978",
+            "correct": "false"
+          },
+          {
+            "title": "1976",
+            "correct": "false"
+          },
+          {
+            "title": "1975",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "Who was the owner of Kidder Peabody?"
+        ],
+        "titleLowercase": "who was the owner of kidder peabody?",
+        "slideOptions": [
+          {
+            "title": "fornaro",
+            "correct": "false"
+          },
+          {
+            "title": "nardelli",
+            "correct": "false"
+          },
+          {
+            "title": "essner",
+            "correct": "false"
+          },
+          {
+            "title": "Benmosche",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "What was Benmosche promoted to president and Chief Operating Officer?"
+        ],
+        "titleLowercase": "what was benmosche promoted to president and chief operating officer?",
+        "slideOptions": [
+          {
+            "title": "cfo",
+            "correct": "false"
+          },
+          {
+            "title": "cto",
+            "correct": "false"
+          },
+          {
+            "title": "seel",
+            "correct": "false"
+          },
+          {
+            "title": "COO",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "In what year did Ben Mosche become COO?"
+        ],
+        "titleLowercase": "in what year did ben mosche become coo?",
+        "slideOptions": [
+          {
+            "title": "1998",
+            "correct": "false"
+          },
+          {
+            "title": "1996",
+            "correct": "false"
+          },
+          {
+            "title": "1999",
+            "correct": "false"
+          },
+          {
+            "title": "1997",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "What year was he named Chairman of the Board and CEO of MetLIfe?"
+        ],
+        "titleLowercase": "what year was he named chairman of the board and ceo of metlife?",
+        "slideOptions": [
+          {
+            "title": "1997",
+            "correct": "false"
+          },
+          {
+            "title": "1996",
+            "correct": "false"
+          },
+          {
+            "title": "1999",
+            "correct": "false"
+          },
+          {
+            "title": "1998",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "In what year was he appointed Chairman of the Board and CEO of MetLife?"
+        ],
+        "titleLowercase": "in what year was he appointed chairman of the board and ceo of metlife?",
+        "slideOptions": [
+          {
+            "title": "1997",
+            "correct": "false"
+          },
+          {
+            "title": "1996",
+            "correct": "false"
+          },
+          {
+            "title": "1999",
+            "correct": "false"
+          },
+          {
+            "title": "1998",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "When did he retire?"
+        ],
+        "titleLowercase": "when did he retire?",
+        "slideOptions": [
+          {
+            "title": "2007",
+            "correct": "false"
+          },
+          {
+            "title": "2005",
+            "correct": "false"
+          },
+          {
+            "title": "2008",
+            "correct": "false"
+          },
+          {
+            "title": "2006",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "In what year did Benmosche retire?"
+        ],
+        "titleLowercase": "in what year did benmosche retire?",
+        "slideOptions": [
+          {
+            "title": "2012",
+            "correct": "false"
+          },
+          {
+            "title": "2011",
+            "correct": "false"
+          },
+          {
+            "title": "2010",
+            "correct": "false"
+          },
+          {
+            "title": "2013",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "What year was the one time discoth\u00e8que bought?"
+        ],
+        "titleLowercase": "what year was the one time discoth\u00e8que bought?",
+        "slideOptions": [
+          {
+            "title": "2002",
+            "correct": "false"
+          },
+          {
+            "title": "2003",
+            "correct": "false"
+          },
+          {
+            "title": "1999",
+            "correct": "false"
+          },
+          {
+            "title": "2001",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "In what year did Benmosche produce 3,000 bottles of wine?"
+        ],
+        "titleLowercase": "in what year did benmosche produce 3,000 bottles of wine?",
+        "slideOptions": [
+          {
+            "title": "2012",
+            "correct": "false"
+          },
+          {
+            "title": "2013",
+            "correct": "false"
+          },
+          {
+            "title": "2010",
+            "correct": "false"
+          },
+          {
+            "title": "2011",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "When did Benmosche testify to the Congressional Troubled Asset Relief Program (TARP) Oversight Panel?"
+        ],
+        "titleLowercase": "when did benmosche testify to the congressional troubled asset relief program (tarp) oversight panel?",
+        "slideOptions": [
+          {
+            "title": "2011",
+            "correct": "false"
+          },
+          {
+            "title": "2009",
+            "correct": "false"
+          },
+          {
+            "title": "2012",
+            "correct": "false"
+          },
+          {
+            "title": "2010",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "What was the name of the person who later asked for a personal private jet?"
+        ],
+        "titleLowercase": "what was the name of the person who later asked for a personal private jet?",
+        "slideOptions": [
+          {
+            "title": "fornaro",
+            "correct": "false"
+          },
+          {
+            "title": "nardelli",
+            "correct": "false"
+          },
+          {
+            "title": "essner",
+            "correct": "false"
+          },
+          {
+            "title": "Benmosche",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "Who was the President of the TARP oversight panel in 2010?"
+        ],
+        "titleLowercase": "who was the president of the tarp oversight panel in 2010?",
+        "slideOptions": [
+          {
+            "title": "fornaro",
+            "correct": "false"
+          },
+          {
+            "title": "nardelli",
+            "correct": "false"
+          },
+          {
+            "title": "essner",
+            "correct": "false"
+          },
+          {
+            "title": "Benmosche",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "Who oversaw the sale of non-core assets in AIG\u2019s portfolio to pay down the $182 billion in government aid?"
+        ],
+        "titleLowercase": "who oversaw the sale of non-core assets in aig\u2019s portfolio to pay down the $182 billion in government aid?",
+        "slideOptions": [
+          {
+            "title": "fornaro",
+            "correct": "false"
+          },
+          {
+            "title": "nardelli",
+            "correct": "false"
+          },
+          {
+            "title": "essner",
+            "correct": "false"
+          },
+          {
+            "title": "Benmosche",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "Benmosche's management has been credited with leading the company to what?"
+        ],
+        "titleLowercase": "benmosche's management has been credited with leading the company to what?",
+        "slideOptions": [
+          {
+            "title": "profits",
+            "correct": "false"
+          },
+          {
+            "title": "earnings",
+            "correct": "false"
+          },
+          {
+            "title": "competitiveness",
+            "correct": "false"
+          },
+          {
+            "title": "profitability",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "What was Benmosche diagnosed with in 2010?"
+        ],
+        "titleLowercase": "what was benmosche diagnosed with in 2010?",
+        "slideOptions": [
+          {
+            "title": "prostate",
+            "correct": "false"
+          },
+          {
+            "title": "breast",
+            "correct": "false"
+          },
+          {
+            "title": "cancers",
+            "correct": "false"
+          },
+          {
+            "title": "cancer",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "What did he continue to do while undergoing an aggressive oral chemotherapy regime?"
+        ],
+        "titleLowercase": "what did he continue to do while undergoing an aggressive oral chemotherapy regime?",
+        "slideOptions": [
+          {
+            "title": "working",
+            "correct": "false"
+          },
+          {
+            "title": "works",
+            "correct": "false"
+          },
+          {
+            "title": "worked",
+            "correct": "false"
+          },
+          {
+            "title": "work",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "In what year did Charlie Rose interview him in December 2012?"
+        ],
+        "titleLowercase": "in what year did charlie rose interview him in december 2012?",
+        "slideOptions": [
+          {
+            "title": "2011",
+            "correct": "false"
+          },
+          {
+            "title": "2009",
+            "correct": "false"
+          },
+          {
+            "title": "2012",
+            "correct": "false"
+          },
+          {
+            "title": "2010",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      },
+      {
+        "title": [
+          "In what year did Benmosche give an interview to the Wall Street Journal?"
+        ],
+        "titleLowercase": "in what year did benmosche give an interview to the wall street journal?",
+        "slideOptions": [
+          {
+            "title": "2012",
+            "correct": "false"
+          },
+          {
+            "title": "2011",
+            "correct": "false"
+          },
+          {
+            "title": "2010",
+            "correct": "false"
+          },
+          {
+            "title": "2013",
+            "correct": "true"
+          }
+        ],
+        "type": "pickAnswer"
+      }
+    ]
+  }
+]
+```
 # Cài đặt
 Yêu cầu: Python 3.7.9, gensim, pytorch === 1.10.0, transformers==3.0.0, pipeline <br />
 Tham khảo lệnh ở các repo sau để cài nếu cần: <br />
