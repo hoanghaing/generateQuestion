@@ -210,7 +210,7 @@ class E2EQGPipeline:
 
         self.device = "cuda" if torch.cuda.is_available() and use_cuda else "cpu"
         self.model.to(self.device)
-
+        # print(self.device) hainh
         assert self.model.__class__.__name__ in ["T5ForConditionalGeneration", "BartForConditionalGeneration"]
         
         if "T5ForConditionalGeneration" in self.model.__class__.__name__:
@@ -220,8 +220,10 @@ class E2EQGPipeline:
         
         self.default_generate_kwargs = {
             "max_length": 256,
-            "num_beams": 4,
-            "length_penalty": 1.5,
+            # "num_beams": 4,
+            # "length_penalty": 1.5,
+            "num_beams": 3,
+            "length_penalty": 1,
             "no_repeat_ngram_size": 3,
             "early_stopping": True,
         }
