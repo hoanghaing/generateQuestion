@@ -42,55 +42,58 @@ print("----------")
 startProcess = time.time()
 nlp_generate_question = pipeline('e2e-qg')
 presentations = []
+start = 0
+end = 101
 for page in pages:
-  presentation = {
-    'name': page['title'],
-    'index': page['index'],
-    'slides': []
-  }
-  print(presentation['name'])
-  paragraphs = page['paragraphs']
-  for paragraph in paragraphs:
-    print("\t"+paragraph)
-    questionAndContexts = []
-    questions = nlp_generate_question(paragraph)
-    for question in questions:
-      questionAndContexts.append({
-        "question": question,
-        "context": paragraph
-      })
-    nlp_find_answer = pipeline("multitask-qa-qg")
-    for ctx in questionAndContexts:
-      answer = nlp_find_answer(ctx)
-      slide = {}
-      if answer:
-        slide['title'] = ctx['question'],
-        slide['titleLowercase'] = ctx['question'].lower()
-        options = generate_distractors(answer, 3)
-        if options: # Has option => create slide/slideOptions to push to presentation.slides
-          slide['slideOptions'] = []
-          slide['type'] = 'pickAnswer'
-          for option in options:
+  id = int(page['id'])
+  is_in_range = id in range(start, end)
+  if (is_in_range):
+    presentation = {
+      'name': page['title'],
+      'index': page['index'],
+      'slides': []
+    }
+    print("id: ", page['id'], " name: ", presentation['name'])
+    paragraphs = page['paragraphs']
+    for paragraph in paragraphs:
+      # print("\t"+paragraph)
+      questionAndContexts = []
+      questions = nlp_generate_question(paragraph)
+      for question in questions:
+        questionAndContexts.append({
+          "question": question,
+          "context": paragraph
+        })
+      nlp_find_answer = pipeline("multitask-qa-qg")
+      for ctx in questionAndContexts:
+        answer = nlp_find_answer(ctx)
+        slide = {}
+        if answer:
+          slide['title'] = ctx['question'],
+          slide['titleLowercase'] = ctx['question'].lower()
+          options = generate_distractors(answer, 3)
+          if options: # Has option => create slide/slideOptions to push to presentation.slides
+            slide['slideOptions'] = []
+            slide['type'] = 'pickAnswer'
+            for option in options:
+              slide['slideOptions'].append({
+                'title': option,
+                'correct': 'false'
+              })
             slide['slideOptions'].append({
-              'title': option,
-              'correct': 'false'
+              'title': answer,
+              'correct': 'true'
             })
-          slide['slideOptions'].append({
-            'title': answer,
-            'correct': 'true'
-          })
-          presentation['slides'].append(slide)
-        else: # No option => push to type ans to generate matchpair
-          pass
-          # result['answer'] = answer
-          # typeans.append(result)
-  presentations.append(presentation)
-print(presentations)
-print(len(presentations[0]['slides']))
+            presentation['slides'].append(slide)
+          else: # No option => push to type ans to generate matchpair
+            pass
+    presentations.append(presentation)
+  else:
+    pass  
 # # fileName extraction
 fileName = fileSrc.split('/')[-1].split('.')[0]
 
-with open(f"{fileName}_presentations.json", "w") as outfile:
+with open(f"{fileName}_{start}-{end-1}_presentations.json", "w") as outfile:
   outfile.write(json.dumps(presentations, indent = 2))
 endProcess = time.time()
 print(f'Process done: {round(endProcess - startProcess, 2)} seconds')
