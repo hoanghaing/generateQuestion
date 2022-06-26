@@ -50,7 +50,6 @@ nlp_generate_question = pipeline('e2e-qg')
 presentations = []
 
 for page in pages:
-  print(page)
   id = int(page['id'])
   is_in_range = id in range(start, end)
   if (is_in_range):
