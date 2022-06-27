@@ -1,6 +1,15 @@
 # Tạo các presentations
-```python ./gen_presentation.py ./context/wiki_test.json```
-<br />Nhận về 'filename'_presentation.json làm input
+``` python ./gen_presentation.py "input json" start_id end_id "export fileName"```
+Ví dụ: <br/>
+```python ./gen_presentation.py ./context/wiki_test.json 0 101```
+<br/>
+Chạy xử lý với file wiki_test.json, từ id 0 -> id 101.
+<br/>
+"export fileName" xài cho trường hợp giả sử chạy đến id = 59 bị lỗi và hệ thống vẫn tạo file từ 0 -> 58 với tên abc.json, lúc này có thể chạy lại 59 -> 100 bằng cách như sau.
+```
+python ./gen_presentation.py ./context/wiki_test.json 59 101 "abc.json"
+```
+<br />Trả về 'filename'_presentation.json hoặc exportFileName đã cho vào
 <br /> Format (wiki_test.json):
 ```
 [
