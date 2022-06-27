@@ -1,9 +1,8 @@
-# python ./gen_presentation.py ./context/wiki_test.json 0 101
+# python ./gen_presentation.py ./context/wiki_test.json 0 101 abc/json
 import sys
 import json
 import time
-
-from numpy import append
+import numpy as np
 from pipelines import pipeline
 from gensim.models import KeyedVectors
 pages = []
@@ -17,6 +16,10 @@ else:
   fileSrc = False
   print('missing parametter')
   sys.exit()
+if (len(sys.argv) > 4):
+  exportName = sys.argv[4]
+else:
+  exportName = None
 if (not fileSrc) or (not end):
   print('missing: fileSource || start || end')
   sys.exit()
@@ -42,13 +45,17 @@ def generate_distractors(answer, count):
   return distractors
 
 def writeToFile(fileName, presentations=[]):
-  with open(f"{fileName}_{start}-{end-1}_presentations.json", "w") as outfile:
-    outfile.write(json.dumps(presentations, indent = 2))
+  if (exportName):
+    with open(exportName, "w", encoding='utf8') as outfile:
+      outfile.write(json.dumps(presentations, indent = 2))
+  else:  
+    with open(f"{fileName}_{start}-{end-1}_presentations.json", "w", encoding='utf8') as outfile:
+      outfile.write(json.dumps(presentations, indent = 2))
 print("----------")
 startProcess = time.time()
 nlp_generate_question = pipeline('e2e-qg')
 presentations = []
-
+totalSlides = 0
 for page in pages:
   id = int(page['id'])
   is_in_range = id in range(start, end)
@@ -63,7 +70,6 @@ for page in pages:
       print("id: ", page['id'], " name: ", presentation['name'])
       paragraphs = page['paragraphs']
       for paragraph in paragraphs:
-        # print("\t"+paragraph)
         questionAndContexts = []
         questions = nlp_generate_question(paragraph)
         for question in questions:
@@ -74,26 +80,33 @@ for page in pages:
         nlp_find_answer = pipeline("multitask-qa-qg")
         for ctx in questionAndContexts:
           answer = nlp_find_answer(ctx)
-          slide = {}
+          slide = {
+          }
           if answer:
-            slide['title'] = ctx['question'],
+            slide['title'] = ctx['question']
             options = generate_distractors(answer, 3)
             if options: # Has option => create slide/slideOptions to push to presentation.slides
               slide['slideOptions'] = []
               slide['type'] = 'pickAnswer'
               for option in options:
                 slide['slideOptions'].append({
-                  'title': option,
+                  'title': option.capitalize(),
                   'correct': 'false'
                 })
               slide['slideOptions'].append({
-                'title': answer,
+                'title': answer.capitalize(),
                 'correct': 'true'
               })
+              np.random.shuffle(slide['slideOptions'])
               presentation['slides'].append(slide)
             else: # No option => push to type ans to generate matchpair
               pass
-      presentations.append(presentation) 
+            
+      if(len(presentation['slides']) > 0):
+        presentations.append(presentation)
+        totalSlides += int(len(presentation['slides']))
+      else:
+        print('fail: no slides generated')
     except:
       # theo doi ngoai le xay ra
       print('Error at id: ', id, ' index: ', page['index'])
@@ -103,5 +116,6 @@ for page in pages:
     pass
 writeToFile(fileName, presentations)
 endProcess = time.time()
-print(f'Process done: {round(endProcess - startProcess, 2)} seconds')
+print(f'Process done: {round((endProcess - startProcess) / 60, 2)} minutes')
+print(f'totalSlides: {totalSlides}')
 # 22 slides, 205.03 sec 1 presentation
