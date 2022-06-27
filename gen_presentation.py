@@ -84,6 +84,7 @@ for page in pages:
           }
           if answer:
             slide['title'] = ctx['question']
+            slide['titleLowercase'] = ctx['question'].lower()
             options = generate_distractors(answer, 3)
             if options: # Has option => create slide/slideOptions to push to presentation.slides
               slide['slideOptions'] = []
