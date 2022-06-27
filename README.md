@@ -1,6 +1,8 @@
 # Tạo các presentations
-``` python ./gen_presentation.py "input json" start_id end_id "export fileName"```
-Ví dụ: <br/>
+```
+python ./gen_presentation.py "input json" start_id end_id "export fileName"
+```
+<br/> Ví dụ: 
 ```python ./gen_presentation.py ./context/wiki_test.json 0 101```
 <br/>
 Chạy xử lý với file wiki_test.json, từ id 0 -> id 101.
