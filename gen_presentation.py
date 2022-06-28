@@ -1,4 +1,5 @@
 # python ./gen_presentation.py ./context/wiki_test.json 0 101 abc/json
+# python ./gen_presentation.py ./context/wiki_0.json 1601 1701
 import sys
 import json
 import time
@@ -14,14 +15,14 @@ if len(sys.argv) >= 3:
   end = int(sys.argv[3])
 else:
   fileSrc = False
-  print('missing parametter')
+  print('Missing parametter')
   sys.exit()
 if (len(sys.argv) > 4):
   exportName = sys.argv[4]
 else:
   exportName = None
 if (not fileSrc) or (not end):
-  print('missing: fileSource || start || end')
+  print('Missing: fileSource || start || end')
   sys.exit()
 else:
   with open(fileSrc, encoding='utf-8') as f:
@@ -51,10 +52,18 @@ def writeToFile(fileName, presentations=[]):
   else:  
     with open(f"{fileName}_{start}-{end-1}_presentations.json", "w", encoding='utf8') as outfile:
       outfile.write(json.dumps(presentations, indent = 2))
+
+def getPresentation():
+  # support you apppend data instead of override new, if the target exportName .json file has data inside
+  f = open(exportName)
+  if(exportName):
+    data = json.load(f)
+    return data
+  return []
 print("----------")
 startProcess = time.time()
 nlp_generate_question = pipeline('e2e-qg')
-presentations = []
+presentations = getPresentation()
 totalSlides = 0
 for page in pages:
   id = int(page['id'])
@@ -101,16 +110,16 @@ for page in pages:
               np.random.shuffle(slide['slideOptions'])
               presentation['slides'].append(slide)
             else: # No option => push to type ans to generate matchpair
-              pass
-            
+              pass   
       if(len(presentation['slides']) > 0):
         presentations.append(presentation)
         totalSlides += int(len(presentation['slides']))
       else:
-        print('fail: no slides generated')
-    except:
+        print('Fail: no slides generated')
+    except Exception as e:
       # theo doi ngoai le xay ra
       print('Error at id: ', id, ' index: ', page['index'])
+      print('Error: ', e)
       writeToFile(fileName, presentations)
       break
   else:
@@ -118,5 +127,5 @@ for page in pages:
 writeToFile(fileName, presentations)
 endProcess = time.time()
 print(f'Process done: {round((endProcess - startProcess) / 60, 2)} minutes')
-print(f'totalSlides: {totalSlides}')
+print(f'TotalSlides: {totalSlides}')
 # 22 slides, 205.03 sec 1 presentation
