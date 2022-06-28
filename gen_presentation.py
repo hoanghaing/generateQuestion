@@ -49,14 +49,18 @@ def writeToFile(fileName, presentations=[]):
   if (exportName):
     with open(exportName, "w", encoding='utf8') as outfile:
       outfile.write(json.dumps(presentations, indent = 2))
-  else:  
+    with open(f"./presentations/wiki_{(end-1)//100}.json", "w", encoding='utf8') as outfile:
+      outfile.write(json.dumps(presentations, indent = 2))
+  else:
     with open(f"{fileName}_{start}-{end-1}_presentations.json", "w", encoding='utf8') as outfile:
+      outfile.write(json.dumps(presentations, indent = 2))
+    with open(f"./presentations/wiki_{(end-1)//100}.json", "w", encoding='utf8') as outfile:
       outfile.write(json.dumps(presentations, indent = 2))
 
 def getPresentation():
   # support you apppend data instead of override new, if the target exportName .json file has data inside
-  f = open(exportName)
   if(exportName):
+    f = open(exportName)
     data = json.load(f)
     return data
   return []
@@ -110,8 +114,8 @@ for page in pages:
               np.random.shuffle(slide['slideOptions'])
               presentation['slides'].append(slide)
             else: # No option => push to type ans to generate matchpair
-              pass   
-      if(len(presentation['slides']) > 0):
+              pass
+      if(len(presentation['slides']) > 3):
         presentations.append(presentation)
         totalSlides += int(len(presentation['slides']))
       else:
@@ -120,7 +124,8 @@ for page in pages:
       # theo doi ngoai le xay ra
       print('Error at id: ', id, ' index: ', page['index'])
       print('Error: ', e)
-      writeToFile(fileName, presentations)
+      pass
+      # writeToFile(fileName, presentations)
       break
   else:
     pass
