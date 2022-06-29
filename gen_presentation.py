@@ -6,6 +6,7 @@ import time
 import numpy as np
 from pipelines import pipeline
 from gensim.models import KeyedVectors
+from present2question import *
 pages = []
 start = None
 end = None
@@ -57,17 +58,10 @@ def writeToFile(fileName, presentations=[]):
     with open(f"./presentations/wiki_{(end-1)//100}.json", "w", encoding='utf8') as outfile:
       outfile.write(json.dumps(presentations, indent = 2))
 
-def getPresentation():
-  # support you apppend data instead of override new, if the target exportName .json file has data inside
-  if(exportName):
-    f = open(exportName)
-    data = json.load(f)
-    return data
-  return []
 print("----------")
 startProcess = time.time()
 nlp_generate_question = pipeline('e2e-qg')
-presentations = getPresentation()
+presentations = getPresentation(exportName)
 totalSlides = 0
 for page in pages:
   id = int(page['id'])
@@ -129,6 +123,8 @@ for page in pages:
       break
   else:
     pass
+
+addPresentTitleToSlide(presentations)
 writeToFile(fileName, presentations)
 endProcess = time.time()
 print(f'Process done: {round((endProcess - startProcess) / 60, 2)} minutes')
