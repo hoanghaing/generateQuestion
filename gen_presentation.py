@@ -67,7 +67,9 @@ for page in pages:
         'index': page['index'],
         'slides': []
       }
-      print("id: ", page['id'], " name: ", presentation['name'])
+      timeLocal = time.localtime()
+      now = time.strftime("%H:%M:%S", timeLocal)
+      print("id: ", page['id'], " name: ", presentation['name'], " at: ", now)
       paragraphs = page['paragraphs']
       for paragraph in paragraphs:
         questionAndContexts = []
