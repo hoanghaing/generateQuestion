@@ -1,10 +1,12 @@
 # python ./gen_presentation.py ./context/wiki_test.json 0 101 abc/json
+# python ./gen_presentation.py ./context/wiki_0.json 1601 1701
 import sys
 import json
 import time
 import numpy as np
 from pipelines import pipeline
 from gensim.models import KeyedVectors
+from present2question import *
 pages = []
 start = None
 end = None
@@ -14,14 +16,14 @@ if len(sys.argv) >= 3:
   end = int(sys.argv[3])
 else:
   fileSrc = False
-  print('missing parametter')
+  print('Missing parametter')
   sys.exit()
 if (len(sys.argv) > 4):
   exportName = sys.argv[4]
 else:
   exportName = None
 if (not fileSrc) or (not end):
-  print('missing: fileSource || start || end')
+  print('Missing: fileSource || start || end')
   sys.exit()
 else:
   with open(fileSrc, encoding='utf-8') as f:
@@ -48,13 +50,18 @@ def writeToFile(fileName, presentations=[]):
   if (exportName):
     with open(exportName, "w", encoding='utf8') as outfile:
       outfile.write(json.dumps(presentations, indent = 2))
-  else:  
+    with open(f"./presentations/wiki_{(end-1)//100}.json", "w", encoding='utf8') as outfile:
+      outfile.write(json.dumps(presentations, indent = 2))
+  else:
     with open(f"{fileName}_{start}-{end-1}_presentations.json", "w", encoding='utf8') as outfile:
       outfile.write(json.dumps(presentations, indent = 2))
+    with open(f"./presentations/wiki_{(end-1)//100}.json", "w", encoding='utf8') as outfile:
+      outfile.write(json.dumps(presentations, indent = 2))
+
 print("----------")
 startProcess = time.time()
 nlp_generate_question = pipeline('e2e-qg')
-presentations = []
+presentations = getPresentation(exportName)
 totalSlides = 0
 for page in pages:
   id = int(page['id'])
@@ -104,21 +111,24 @@ for page in pages:
               presentation['slides'].append(slide)
             else: # No option => push to type ans to generate matchpair
               pass
-            
-      if(len(presentation['slides']) > 0):
+      if(len(presentation['slides']) > 3):
         presentations.append(presentation)
         totalSlides += int(len(presentation['slides']))
       else:
-        print('fail: no slides generated')
-    except:
+        print('Fail: no slides generated')
+    except Exception as e:
       # theo doi ngoai le xay ra
       print('Error at id: ', id, ' index: ', page['index'])
-      writeToFile(fileName, presentations)
+      print('Error: ', e)
+      pass
+      # writeToFile(fileName, presentations)
       break
   else:
     pass
+
+addPresentTitleToSlide(presentations)
 writeToFile(fileName, presentations)
 endProcess = time.time()
 print(f'Process done: {round((endProcess - startProcess) / 60, 2)} minutes')
-print(f'totalSlides: {totalSlides}')
+print(f'TotalSlides: {totalSlides}')
 # 22 slides, 205.03 sec 1 presentation
